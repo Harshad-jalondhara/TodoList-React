@@ -13,11 +13,11 @@ const TodoList = () => {
   };
 
   const handleDelete = (index) => {
-    const newTodoList = [...todos];
-    console.log(newTodoList);
+    const newTodoList = [...todos]; // ...todos value = newTodoList ma save thay
+    console.log(...todos); // confirmation print
 
-    newTodoList[index].completed = !newTodoList[index].completed
-    setTodos(newTodoList);
+    newTodoList[index].completed = !newTodoList[index].completed // value true = false and false = true
+    setTodos(newTodoList); // newTodoList ne value => setTodos ma save kare
   };
 
   return (
@@ -36,10 +36,15 @@ const TodoList = () => {
     
       <ul>
         {
+            // todos = state array (saare todo items)
+            // map() = array ke har item par loop
+            // todo = current todo object  { text, completed }
+            // index = current todo ka position (0,1,2...)
             todos.map((todo, index) => (
                 <li key={index}>
-                    <span style={{textDecoration: todo.completed ? "line-through" : "none"}}
-                    >{todo.text}</span>
+                    <span style={{textDecoration: todo.completed ? "line-through" : "none"}}>
+                        {todo.text} 
+                    </span>
                     <button onClick={() => handleDelete(index)}>Delete</button>
                 </li>
             ))
